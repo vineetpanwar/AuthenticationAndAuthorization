@@ -1,0 +1,40 @@
+{
+  "name": "authentication-and-authorization",
+  "version": "1.0.0",
+  "description": "Comprehensive examples of Authentication and Authorization patterns",
+  "main": "index.js",
+  "scripts": {
+    "basic-auth": "node src/authentication/01-basic-auth/server.js",
+    "bearer-token": "node src/authentication/02-bearer-token/server.js",
+    "api-key": "node src/authentication/03-api-key/server.js",
+    "oauth2": "node src/authentication/04-oauth2/server.js",
+    "jwt": "node src/authentication/05-jwt/server.js",
+    "refresh-token": "node src/authentication/06-refresh-token/server.js",
+    "sso": "node src/authentication/07-sso/server.js",
+    "passkeys": "node src/authentication/08-passkeys/server.js",
+    "rbac": "node src/authorization/01-rbac/server.js",
+    "abac": "node src/authorization/02-abac/server.js",
+    "acl": "node src/authorization/03-acl/server.js"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "^11.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.22.1",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "uuid": "^9.0.0"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "marked": "^4.3.0",
+    "playwright": "^1.58.2"
+  }
+}

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Bearer Token Authentication Flow</text>
+
+  <defs>
+    <marker id="arrBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="arrOrange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E65100"/>
+    </marker>
+  </defs>
+
+  <!-- Client Box -->
+  <rect x="40" y="80" width="160" height="70" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="120" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565C0">Client</text>
+  <text x="120" y="132" text-anchor="middle" font-size="11" fill="#555">Browser / App</text>
+
+  <!-- Server Box -->
+  <rect x="560" y="80" width="180" height="70" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="650" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#2E7D32">Server</text>
+  <text x="650" y="132" text-anchor="middle" font-size="11" fill="#555">Auth + API</text>
+
+  <!-- Token Store -->
+  <rect x="590" y="175" width="120" height="40" rx="8" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="650" y="200" text-anchor="middle" font-size="11" fill="#E65100">Token Store</text>
+  <line x1="650" y1="150" x2="650" y2="175" stroke="#E65100" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <!-- Step 1: POST /login -->
+  <line x1="200" y1="95" x2="555" y2="95" stroke="#1565C0" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <rect x="260" y="75" width="215" height="22" rx="5" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="272" cy="86" r="9" fill="#1565C0"/>
+  <text x="272" y="90" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">1</text>
+  <text x="375" y="90" text-anchor="middle" font-size="11" fill="#555">POST /login (credentials)</text>
+
+  <!-- Step 2: Generate token (internal) -->
+  <circle cx="575" cy="195" r="9" fill="#E65100"/>
+  <text x="575" y="199" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">2</text>
+  <text x="650" y="230" text-anchor="middle" font-size="10" fill="#E65100">Generate token</text>
+
+  <!-- Step 3: Return token -->
+  <line x1="560" y1="130" x2="205" y2="130" stroke="#2E7D32" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <rect x="285" y="133" width="180" height="22" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="297" cy="144" r="9" fill="#2E7D32"/>
+  <text x="297" y="148" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">3</text>
+  <text x="385" y="148" text-anchor="middle" font-size="11" fill="#555">Return token</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="260" x2="770" y2="260" stroke="#ccc" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="278" text-anchor="middle" font-size="11" fill="#999">Subsequent API Requests</text>
+
+  <!-- Client Box 2 -->
+  <rect x="40" y="290" width="160" height="50" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="120" y="320" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Client</text>
+
+  <!-- Server Box 2 -->
+  <rect x="560" y="290" width="180" height="50" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="650" y="320" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Server</text>
+
+  <!-- Step 4: Request + Bearer Token -->
+  <line x1="200" y1="302" x2="555" y2="302" stroke="#1565C0" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <rect x="230" y="283" width="280" height="22" rx="5" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="242" cy="294" r="9" fill="#1565C0"/>
+  <text x="242" y="298" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">4</text>
+  <text x="380" y="298" text-anchor="middle" font-size="11" fill="#555">Request + Authorization: Bearer &lt;token&gt;</text>
+
+  <!-- Step 5: Validate -->
+  <rect x="607" y="348" width="100" height="20" rx="5" fill="#FFF3E0" stroke="#E65100" stroke-width="1"/>
+  <circle cx="618" cy="358" r="9" fill="#E65100"/>
+  <text x="618" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">5</text>
+  <text x="665" y="362" text-anchor="middle" font-size="10" fill="#E65100">Validate</text>
+  <line x1="650" y1="340" x2="650" y2="348" stroke="#E65100" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+  <!-- Step 6: Response -->
+  <line x1="560" y1="330" x2="205" y2="330" stroke="#2E7D32" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <rect x="320" y="333" width="130" height="22" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="332" cy="344" r="9" fill="#2E7D32"/>
+  <text x="332" y="348" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">6</text>
+  <text x="395" y="348" text-anchor="middle" font-size="11" fill="#555">200 Response</text>
+
+  <!-- Header Example -->
+  <rect x="40" y="170" width="350" height="50" rx="8" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5"/>
+  <text x="215" y="190" text-anchor="middle" font-size="11" font-weight="bold" fill="#7B1FA2">Token stored client-side</text>
+  <text x="215" y="208" text-anchor="middle" font-size="10" fill="#555" font-family="Courier New, monospace">localStorage / httpOnly cookie / memory</text>
+</svg>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">JWT (JSON Web Token) Authentication</text>
+
+  <defs>
+    <marker id="jBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="jGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+  </defs>
+
+  <!-- JWT Structure -->
+  <rect x="60" y="48" width="680" height="70" rx="10" fill="#FAFAFA" stroke="#ddd" stroke-width="1"/>
+  <text x="400" y="68" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">JWT Structure:  xxxxx.yyyyy.zzzzz</text>
+
+  <!-- Header -->
+  <rect x="85" y="80" width="180" height="30" rx="6" fill="#FFCDD2" stroke="#C62828" stroke-width="1.5"/>
+  <text x="175" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#C62828">Header (Algorithm)</text>
+
+  <!-- dot -->
+  <text x="274" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#555">.</text>
+
+  <!-- Payload -->
+  <rect x="285" y="80" width="200" height="30" rx="6" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="385" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">Payload (Claims)</text>
+
+  <!-- dot -->
+  <text x="494" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#555">.</text>
+
+  <!-- Signature -->
+  <rect x="505" y="80" width="210" height="30" rx="6" fill="#BBDEFB" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="610" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">Signature (Verification)</text>
+
+  <!-- Flow Section -->
+  <!-- Client Box -->
+  <rect x="40" y="155" width="140" height="55" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="110" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">Client</text>
+  <text x="110" y="198" text-anchor="middle" font-size="10" fill="#555">Browser / App</text>
+
+  <!-- Server Box -->
+  <rect x="580" y="155" width="160" height="55" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="660" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">Server</text>
+  <text x="660" y="198" text-anchor="middle" font-size="10" fill="#555">Auth + Secret Key</text>
+
+  <!-- Step 1: Login -->
+  <line x1="180" y1="170" x2="575" y2="170" stroke="#1565C0" stroke-width="2" marker-end="url(#jBlue)"/>
+  <rect x="300" y="152" width="160" height="20" rx="5" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="312" cy="162" r="9" fill="#1565C0"/>
+  <text x="312" y="166" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">1</text>
+  <text x="390" y="166" text-anchor="middle" font-size="10" fill="#555">POST /login (credentials)</text>
+
+  <!-- Step 2: Create JWT -->
+  <line x1="575" y1="195" x2="185" y2="195" stroke="#2E7D32" stroke-width="2" marker-end="url(#jGreen)"/>
+  <rect x="280" y="197" width="220" height="20" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="292" cy="207" r="9" fill="#2E7D32"/>
+  <text x="292" y="211" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">2</text>
+  <text x="400" y="211" text-anchor="middle" font-size="10" fill="#555">JWT (signed with secret key)</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="230" x2="770" y2="230" stroke="#ccc" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="400" y="245" text-anchor="middle" font-size="10" fill="#999">Subsequent Requests</text>
+
+  <!-- Client Box 2 -->
+  <rect x="40" y="255" width="140" height="45" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="110" y="283" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Client</text>
+
+  <!-- Server Box 2 -->
+  <rect x="580" y="255" width="160" height="45" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="660" y="283" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Server</text>
+
+  <!-- Step 3 -->
+  <line x1="180" y1="267" x2="575" y2="267" stroke="#1565C0" stroke-width="2" marker-end="url(#jBlue)"/>
+  <rect x="250" y="250" width="260" height="20" rx="5" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="262" cy="260" r="9" fill="#1565C0"/>
+  <text x="262" y="264" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">3</text>
+  <text x="390" y="264" text-anchor="middle" font-size="10" fill="#555">Request + Authorization: Bearer &lt;JWT&gt;</text>
+
+  <!-- Step 4+5 -->
+  <rect x="610" y="305" width="110" height="20" rx="5" fill="#FFF3E0" stroke="#E65100" stroke-width="1"/>
+  <circle cx="622" cy="315" r="9" fill="#E65100"/>
+  <text x="622" y="319" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">4</text>
+  <text x="675" y="319" text-anchor="middle" font-size="9" fill="#E65100">Verify &amp; decode</text>
+  <line x1="660" y1="300" x2="660" y2="305" stroke="#E65100" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+  <line x1="575" y1="290" x2="185" y2="290" stroke="#2E7D32" stroke-width="2" marker-end="url(#jGreen)"/>
+  <rect x="320" y="292" width="130" height="20" rx="5" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="332" cy="302" r="9" fill="#2E7D32"/>
+  <text x="332" y="306" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">5</text>
+  <text x="395" y="306" text-anchor="middle" font-size="10" fill="#555">200 Response</text>
+
+  <!-- Decoded JWT Example -->
+  <rect x="40" y="335" width="330" height="55" rx="8" fill="#FFCDD2" stroke="#C62828" stroke-width="1"/>
+  <text x="55" y="353" font-size="10" font-weight="bold" fill="#C62828">Header:</text>
+  <text x="55" y="368" font-size="9" fill="#333" font-family="Courier New, monospace">{"alg": "HS256", "typ": "JWT"}</text>
+  <text x="55" y="383" font-size="8" fill="#888">Specifies signing algorithm</text>
+
+  <rect x="390" y="335" width="175" height="55" rx="8" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1"/>
+  <text x="405" y="353" font-size="10" font-weight="bold" fill="#2E7D32">Payload:</text>
+  <text x="405" y="368" font-size="9" fill="#333" font-family="Courier New, monospace">{"sub":"1234",</text>
+  <text x="405" y="383" font-size="9" fill="#333" font-family="Courier New, monospace"> "role":"admin","exp":...}</text>
+
+  <rect x="585" y="335" width="175" height="55" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="600" y="353" font-size="10" font-weight="bold" fill="#1565C0">Signature:</text>
+  <text x="600" y="368" font-size="9" fill="#333" font-family="Courier New, monospace">HMACSHA256(</text>
+  <text x="600" y="383" font-size="9" fill="#333" font-family="Courier New, monospace"> header.payload, secret)</text>
+</svg>

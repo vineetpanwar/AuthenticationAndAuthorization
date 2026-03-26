@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Access Control List (ACL) Model</text>
+  <text x="400" y="50" text-anchor="middle" font-size="12" fill="#888">Google Drive-style Sharing Model</text>
+
+  <!-- Resource: File A -->
+  <rect x="30" y="70" width="130" height="50" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="95" y="95" text-anchor="middle" font-size="10" fill="#555">&#128196;</text>
+  <text x="95" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">File A</text>
+
+  <!-- ACL Table for File A -->
+  <rect x="190" y="62" width="250" height="72" rx="6" fill="#FAFAFA" stroke="#2E7D32" stroke-width="1.5"/>
+  <rect x="190" y="62" width="250" height="20" rx="6" fill="#E8F5E9"/>
+  <text x="240" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">User</text>
+  <text x="370" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">Permissions</text>
+  <line x1="190" y1="82" x2="440" y2="82" stroke="#C8E6C9" stroke-width="1"/>
+  <line x1="300" y1="62" x2="300" y2="134" stroke="#C8E6C9" stroke-width="1"/>
+
+  <text x="245" y="98" text-anchor="middle" font-size="10" fill="#555">Alice (Owner)</text>
+  <rect x="310" y="88" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="100" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+  <rect x="355" y="88" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="375" y="100" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">write</text>
+  <rect x="400" y="88" width="30" height="16" rx="3" fill="#FFCDD2"/>
+  <text x="415" y="100" text-anchor="middle" font-size="8" font-weight="bold" fill="#C62828">del</text>
+
+  <text x="245" y="118" text-anchor="middle" font-size="10" fill="#555">Bob</text>
+  <rect x="310" y="108" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="120" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+  <rect x="355" y="108" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="375" y="120" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">write</text>
+
+  <line x1="160" y1="95" x2="185" y2="95" stroke="#2E7D32" stroke-width="1.5"/>
+
+  <!-- Resource: File B -->
+  <rect x="30" y="155" width="130" height="50" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="95" y="180" text-anchor="middle" font-size="10" fill="#555">&#128196;</text>
+  <text x="95" y="195" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">File B</text>
+
+  <!-- ACL Table for File B -->
+  <rect x="190" y="147" width="250" height="72" rx="6" fill="#FAFAFA" stroke="#1565C0" stroke-width="1.5"/>
+  <rect x="190" y="147" width="250" height="20" rx="6" fill="#E3F2FD"/>
+  <text x="240" y="161" text-anchor="middle" font-size="10" font-weight="bold" fill="#1565C0">User</text>
+  <text x="370" y="161" text-anchor="middle" font-size="10" font-weight="bold" fill="#1565C0">Permissions</text>
+  <line x1="190" y1="167" x2="440" y2="167" stroke="#BBDEFB" stroke-width="1"/>
+  <line x1="300" y1="147" x2="300" y2="219" stroke="#BBDEFB" stroke-width="1"/>
+
+  <text x="245" y="183" text-anchor="middle" font-size="10" fill="#555">Bob (Owner)</text>
+  <rect x="310" y="173" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="185" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+  <rect x="355" y="173" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="375" y="185" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">write</text>
+  <rect x="400" y="173" width="30" height="16" rx="3" fill="#FFCDD2"/>
+  <text x="415" y="185" text-anchor="middle" font-size="8" font-weight="bold" fill="#C62828">del</text>
+
+  <text x="245" y="203" text-anchor="middle" font-size="10" fill="#555">Carol</text>
+  <rect x="310" y="193" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="205" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+
+  <line x1="160" y1="180" x2="185" y2="180" stroke="#1565C0" stroke-width="1.5"/>
+
+  <!-- Resource: File C -->
+  <rect x="30" y="240" width="130" height="50" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="95" y="265" text-anchor="middle" font-size="10" fill="#555">&#128196;</text>
+  <text x="95" y="280" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">File C</text>
+
+  <!-- ACL Table for File C -->
+  <rect x="190" y="232" width="250" height="72" rx="6" fill="#FAFAFA" stroke="#E65100" stroke-width="1.5"/>
+  <rect x="190" y="232" width="250" height="20" rx="6" fill="#FFF3E0"/>
+  <text x="240" y="246" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">User</text>
+  <text x="370" y="246" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">Permissions</text>
+  <line x1="190" y1="252" x2="440" y2="252" stroke="#FFE0B2" stroke-width="1"/>
+  <line x1="300" y1="232" x2="300" y2="304" stroke="#FFE0B2" stroke-width="1"/>
+
+  <text x="245" y="268" text-anchor="middle" font-size="10" fill="#555">Carol (Owner)</text>
+  <rect x="310" y="258" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="270" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+  <rect x="355" y="258" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="375" y="270" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">write</text>
+  <rect x="400" y="258" width="30" height="16" rx="3" fill="#FFCDD2"/>
+  <text x="415" y="270" text-anchor="middle" font-size="8" font-weight="bold" fill="#C62828">del</text>
+
+  <text x="245" y="290" text-anchor="middle" font-size="10" fill="#555">Alice, Bob</text>
+  <rect x="310" y="280" width="40" height="16" rx="3" fill="#C8E6C9"/>
+  <text x="330" y="292" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">read</text>
+
+  <line x1="160" y1="265" x2="185" y2="265" stroke="#E65100" stroke-width="1.5"/>
+
+  <!-- Google Drive Sharing UI -->
+  <rect x="490" y="70" width="280" height="235" rx="12" fill="#FAFAFA" stroke="#bbb" stroke-width="2"/>
+  <rect x="490" y="70" width="280" height="35" rx="12" fill="#E3F2FD" stroke="#bbb" stroke-width="0"/>
+  <rect x="490" y="90" width="280" height="15" fill="#E3F2FD"/>
+  <text x="630" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Sharing Model (Like Google Drive)</text>
+
+  <!-- Owner -->
+  <rect x="510" y="115" width="240" height="32" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="1"/>
+  <circle cx="530" cy="131" r="10" fill="#E65100"/>
+  <text x="530" y="135" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">O</text>
+  <text x="580" y="128" font-size="10" fill="#555">Owner</text>
+  <text x="580" y="141" font-size="8" fill="#888">Full control + share + delete</text>
+
+  <!-- Editor -->
+  <rect x="510" y="155" width="240" height="32" rx="6" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="530" cy="171" r="10" fill="#2E7D32"/>
+  <text x="530" y="175" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">E</text>
+  <text x="580" y="168" font-size="10" fill="#555">Editor</text>
+  <text x="580" y="181" font-size="8" fill="#888">Read + Write (cannot delete)</text>
+
+  <!-- Commenter -->
+  <rect x="510" y="195" width="240" height="32" rx="6" fill="#E3F2FD" stroke="#1565C0" stroke-width="1"/>
+  <circle cx="530" cy="211" r="10" fill="#1565C0"/>
+  <text x="530" y="215" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">C</text>
+  <text x="580" y="208" font-size="10" fill="#555">Commenter</text>
+  <text x="580" y="221" font-size="8" fill="#888">Read + Comment</text>
+
+  <!-- Viewer -->
+  <rect x="510" y="235" width="240" height="32" rx="6" fill="#F5F5F5" stroke="#888" stroke-width="1"/>
+  <circle cx="530" cy="251" r="10" fill="#888"/>
+  <text x="530" y="255" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">V</text>
+  <text x="580" y="248" font-size="10" fill="#555">Viewer</text>
+  <text x="580" y="261" font-size="8" fill="#888">Read only</text>
+
+  <!-- Link sharing -->
+  <rect x="510" y="275" width="240" height="22" rx="4" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <text x="630" y="290" text-anchor="middle" font-size="9" fill="#F57F17">Anyone with link: Viewer / Editor / Off</text>
+
+  <!-- Key insight -->
+  <rect x="30" y="325" width="740" height="60" rx="10" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5"/>
+  <text x="400" y="348" text-anchor="middle" font-size="12" font-weight="bold" fill="#7B1FA2">ACL Key Concept</text>
+  <text x="400" y="368" text-anchor="middle" font-size="11" fill="#555">Each resource maintains its own list of who can do what. Permissions are per-resource, not per-role.</text>
+  <text x="400" y="382" text-anchor="middle" font-size="10" fill="#888">Best for: File systems, document sharing, network resources | Challenge: Can become hard to manage at scale</text>
+</svg>

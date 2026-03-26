@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passkeys (WebAuthn/FIDO2) Demo</title>
+  <!--
+    @simplewebauthn/browser provides convenience wrappers around the raw
+    WebAuthn browser APIs (navigator.credentials.create/get). It handles
+    base64url encoding/decoding and other boilerplate.
+  -->
+  <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 0.25rem;
+      color: #f1f5f9;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .flow-diagram {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: #94a3b8;
+      text-align: center;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+      color: #f1f5f9;
+    }
+
+    .card .description {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #6366f1;
+    }
+
+    button {
+      padding: 0.65rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-register {
+      background: #6366f1;
+      color: white;
+    }
+
+    .btn-register:hover:not(:disabled) {
+      background: #4f46e5;
+    }
+
+    .btn-login {
+      background: #10b981;
+      color: white;
+    }
+
+    .btn-login:hover:not(:disabled) {
+      background: #059669;
+    }
+
+    .steps {
+      margin-top: 1rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .steps li .step-num {
+      background: #334155;
+      color: #e2e8f0;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    #status-area {
+      margin-top: 1.5rem;
+    }
+
+    .status-entry {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .status-info {
+      background: #1e3a5f;
+      border: 1px solid #2563eb;
+      color: #93c5fd;
+    }
+
+    .status-success {
+      background: #14532d;
+      border: 1px solid #16a34a;
+      color: #86efac;
+    }
+
+    .status-error {
+      background: #450a0a;
+      border: 1px solid #dc2626;
+      color: #fca5a5;
+    }
+
+    .status-step {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #cbd5e1;
+    }
+
+    .clear-btn {
+      background: #334155;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .clear-btn:hover {
+      background: #475569;
+    }
+
+    .info-box {
+      background: #1a1a2e;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Passkeys (WebAuthn/FIDO2) Demo</h1>
+    <p class="subtitle">Passwordless authentication using public-key cryptography</p>
+
+    <div class="flow-diagram">
+  Registration:    Browser ---[1. Request Options]---> Server
+                   Browser <--[2. Challenge + Config]-- Server
+                   Browser ---[3. Create Credential]--> Authenticator (Touch ID, etc.)
+                   Browser ---[4. Send Attestation]---> Server
+                   Browser <--[5. Verified! Stored.]--- Server
+
+  Authentication:  Browser ---[1. Request Options]---> Server
+                   Browser <--[2. Challenge + IDs]---- Server
+                   Browser ---[3. Sign Challenge]-----> Authenticator
+                   Browser ---[4. Send Assertion]-----> Server
+                   Browser <--[5. Verified! Welcome.]- Server</div>
+
+    <div class="info-box">
+      <strong>How it works:</strong> Passkeys use public-key cryptography instead of passwords.
+      During registration, your device creates a unique key pair. The private key stays on your
+      device (secured by biometrics/PIN), while the public key is sent to the server.
+      During login, the server sends a challenge, your device signs it with the private key,
+      and the server verifies the signature with the public key. No secrets are ever transmitted.
+    </div>
+
+    <!-- Registration Card -->
+    <div class="card">
+      <h2>Register a Passkey</h2>
+      <p class="description">Create a new account and register a passkey for it.</p>
+      <div class="input-group">
+        <input type="text" id="register-username" placeholder="Choose a username" />
+        <button class="btn-register" id="register-btn" onclick="handleRegister()">Register</button>
+      </div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Server generates a challenge and options</li>
+        <li><span class="step-num">2</span>Browser triggers authenticator (biometric/PIN prompt)</li>
+        <li><span class="step-num">3</span>Authenticator creates a key pair; private key stays on device</li>
+        <li><span class="step-num">4</span>Public key + attestation sent to server for storage</li>
+      </ul>
+    </div>
+
+    <!-- Login Card -->
+    <div class="card">
+      <h2>Login with Passkey</h2>
+      <p class="description">Authenticate using a previously registered passkey.</p>
+      <div class="input-group">
+        <input type="text" id="login-username" placeholder="Enter your username" />
+        <button class="btn-login" id="login-btn" onclick="handleLogin()">Login</button>
+      </div>
+      <ul class="steps">
+        <li><span class="step-num">1</span>Server generates a challenge and allowed credentials</li>
+        <li><span class="step-num">2</span>Browser triggers authenticator (biometric/PIN prompt)</li>
+        <li><span class="step-num">3</span>Authenticator signs the challenge with the private key</li>
+        <li><span class="step-num">4</span>Server verifies signature using the stored public key</li>
+      </ul>
+    </div>
+
+    <!-- Status Area -->
+    <div id="status-area">
+      <h2 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Activity Log</h2>
+      <div id="status-messages"></div>
+      <button class="clear-btn" onclick="clearStatus()">Clear Log</button>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------------
+    // SimpleWebAuthn browser helpers are loaded from the UMD bundle above.
+    // They are available on the global SimpleWebAuthnBrowser object.
+    // -------------------------------------------------------------------
+    const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+
+    // -------------------------------------------------------------------
+    // Status message helpers
+    // -------------------------------------------------------------------
+    function addStatus(message, type = 'info') {
+      const area = document.getElementById('status-messages');
+      const entry = document.createElement('div');
+      entry.className = `status-entry status-${type}`;
+      const timestamp = new Date().toLocaleTimeString();
+      entry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`;
+      area.prepend(entry);
+    }
+
+    function clearStatus() {
+      document.getElementById('status-messages').innerHTML = '';
+    }
+
+    function setButtonLoading(btn, loading) {
+      btn.disabled = loading;
+      if (loading) {
+        btn.dataset.originalText = btn.textContent;
+        btn.textContent = 'Working...';
+      } else {
+        btn.textContent = btn.dataset.originalText || btn.textContent;
+      }
+    }
+
+    // ===================================================================
+    // REGISTRATION
+    // ===================================================================
+    async function handleRegister() {
+      const usernameInput = document.getElementById('register-username');
+      const btn = document.getElementById('register-btn');
+      const username = usernameInput.value.trim();
+
+      if (!username) {
+        addStatus('Please enter a username to register.', 'error');
+        return;
+      }
+
+      setButtonLoading(btn, true);
+
+      try {
+        // ----------------------------------------------------------
+        // Step 1: Get registration options from the server
+        // ----------------------------------------------------------
+        addStatus(`Requesting registration options for "${username}"...`, 'step');
+
+        const optionsResp = await fetch('/api/register/options', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username }),
+        });
+
+        if (!optionsResp.ok) {
+          const err = await optionsResp.json();
+          throw new Error(err.error || 'Failed to get registration options');
+        }
+
+        const options = await optionsResp.json();
+        addStatus('Received registration options from server. Challenge generated.', 'step');
+
+        // ----------------------------------------------------------
+        // Step 2: Start the WebAuthn registration ceremony
+        //
+        // This calls navigator.credentials.create() under the hood.
+        // The browser will prompt the user to:
+        //   - Use Touch ID / Face ID / Windows Hello / Security Key
+        //   - Create a new credential (key pair)
+        //
+        // The private key is stored securely on the device.
+        // The public key is returned in the attestation response.
+        // ----------------------------------------------------------
+        addStatus('Waiting for authenticator... (check for a biometric/PIN prompt)', 'info');
+
+        let attestationResponse;
+        try {
+          attestationResponse = await startRegistration({ optionsJSON: options });
+        } catch (err) {
+          // User cancelled or authenticator error
+          if (err.name === 'NotAllowedError') {
+            throw new Error('Registration was cancelled or timed out.');
+          }
+          throw err;
+        }
+
+        addStatus('Authenticator responded. Credential created. Sending to server...', 'step');
+
+        // ----------------------------------------------------------
+        // Step 3: Send the attestation response to the server
+        // ----------------------------------------------------------
+        const verifyResp = await fetch('/api/register/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username,
+            attestationResponse,
+          }),
+        });
+
+        const verifyResult = await verifyResp.json();
+
+        if (verifyResult.verified) {
+          addStatus(
+            `Registration successful! Passkey for "${username}" is now stored. ` +
+            `Device type: ${verifyResult.credential?.deviceType || 'unknown'}, ` +
+            `Synced: ${verifyResult.credential?.backedUp ?? 'unknown'}`,
+            'success'
+          );
+        } else {
+          throw new Error(verifyResult.error || 'Registration verification failed');
+        }
+      } catch (error) {
+        addStatus(`Registration failed: ${error.message}`, 'error');
+        console.error('Registration error:', error);
+      } finally {
+        setButtonLoading(btn, false);
+      }
+    }
+
+    // ===================================================================
+    // AUTHENTICATION
+    // ===================================================================
+    async function handleLogin() {
+      const usernameInput = document.getElementById('login-username');
+      const btn = document.getElementById('login-btn');
+      const username = usernameInput.value.trim();
+
+      if (!username) {
+        addStatus('Please enter a username to login.', 'error');
+        return;
+      }
+
+      setButtonLoading(btn, true);
+
+      try {
+        // ----------------------------------------------------------
+        // Step 1: Get authentication options from the server
+        // ----------------------------------------------------------
+        addStatus(`Requesting authentication options for "${username}"...`, 'step');
+
+        const optionsResp = await fetch('/api/login/options', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username }),
+        });
+
+        if (!optionsResp.ok) {
+          const err = await optionsResp.json();
+          throw new Error(err.error || 'Failed to get authentication options');
+        }
+
+        const options = await optionsResp.json();
+        addStatus('Received authentication options from server. Challenge generated.', 'step');
+
+        // ----------------------------------------------------------
+        // Step 2: Start the WebAuthn authentication ceremony
+        //
+        // This calls navigator.credentials.get() under the hood.
+        // The browser will prompt the user to:
+        //   - Select a credential (if multiple exist)
+        //   - Verify with Touch ID / Face ID / Windows Hello / PIN
+        //
+        // The authenticator signs the challenge with the private key.
+        // The signature is returned in the assertion response.
+        //
+        // Note: The private key NEVER leaves the device. Only the
+        // signature is sent to the server.
+        // ----------------------------------------------------------
+        addStatus('Waiting for authenticator... (check for a biometric/PIN prompt)', 'info');
+
+        let assertionResponse;
+        try {
+          assertionResponse = await startAuthentication({ optionsJSON: options });
+        } catch (err) {
+          if (err.name === 'NotAllowedError') {
+            throw new Error('Authentication was cancelled or timed out.');
+          }
+          throw err;
+        }
+
+        addStatus('Authenticator responded. Signature created. Verifying with server...', 'step');
+
+        // ----------------------------------------------------------
+        // Step 3: Send the assertion response to the server
+        // ----------------------------------------------------------
+        const verifyResp = await fetch('/api/login/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username,
+            assertionResponse,
+          }),
+        });
+
+        const verifyResult = await verifyResp.json();
+
+        if (verifyResult.verified) {
+          addStatus(
+            `Authentication successful! Welcome back, "${username}". ` +
+            `You have ${verifyResult.user?.credentialCount || 0} registered passkey(s).`,
+            'success'
+          );
+        } else {
+          throw new Error(verifyResult.error || 'Authentication verification failed');
+        }
+      } catch (error) {
+        addStatus(`Authentication failed: ${error.message}`, 'error');
+        console.error('Authentication error:', error);
+      } finally {
+        setButtonLoading(btn, false);
+      }
+    }
+
+    // ===================================================================
+    // Allow Enter key to trigger actions
+    // ===================================================================
+    document.getElementById('register-username').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleRegister();
+    });
+    document.getElementById('login-username').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleLogin();
+    });
+
+    // ===================================================================
+    // Check WebAuthn support on load
+    // ===================================================================
+    (async function checkSupport() {
+      if (!window.PublicKeyCredential) {
+        addStatus(
+          'WebAuthn is NOT supported in this browser. Please use a modern browser ' +
+          '(Chrome, Firefox, Safari, Edge).',
+          'error'
+        );
+        document.getElementById('register-btn').disabled = true;
+        document.getElementById('login-btn').disabled = true;
+        return;
+      }
+
+      addStatus('WebAuthn is supported in this browser.', 'success');
+
+      // Check if platform authenticator is available (Touch ID, Windows Hello, etc.)
+      try {
+        const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+        if (available) {
+          addStatus(
+            'Platform authenticator detected (e.g., Touch ID, Windows Hello, Face ID). ' +
+            'You can register a passkey using your device biometrics.',
+            'success'
+          );
+        } else {
+          addStatus(
+            'No platform authenticator detected. You can still use a security key (e.g., YubiKey) ' +
+            'or a phone as a cross-platform authenticator.',
+            'info'
+          );
+        }
+      } catch (err) {
+        // This check is optional, not critical
+      }
+    })();
+  </script>
+</body>
+</html>

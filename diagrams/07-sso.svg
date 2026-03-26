@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Single Sign-On (SSO) Flow</text>
+
+  <defs>
+    <marker id="sBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="sGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="sOrange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E65100"/>
+    </marker>
+    <marker id="sPurple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7B1FA2"/>
+    </marker>
+  </defs>
+
+  <!-- Identity Provider (center top) -->
+  <rect x="300" y="50" width="200" height="70" rx="14" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+  <text x="400" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#E65100">Identity Provider</text>
+  <text x="400" y="98" text-anchor="middle" font-size="11" fill="#555">(Okta, Azure AD, Google)</text>
+  <text x="400" y="112" text-anchor="middle" font-size="9" fill="#888">Single source of truth</text>
+
+  <!-- User -->
+  <rect x="30" y="55" width="120" height="55" rx="12" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="90" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B1FA2">User</text>
+  <text x="90" y="98" text-anchor="middle" font-size="10" fill="#555">One identity</text>
+
+  <!-- Service Provider A -->
+  <rect x="55" y="200" width="160" height="60" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="135" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Service Provider A</text>
+  <text x="135" y="245" text-anchor="middle" font-size="10" fill="#555">(Email App)</text>
+
+  <!-- Service Provider B -->
+  <rect x="310" y="200" width="160" height="60" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="390" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Service Provider B</text>
+  <text x="390" y="245" text-anchor="middle" font-size="10" fill="#555">(Chat App)</text>
+
+  <!-- Service Provider C -->
+  <rect x="565" y="200" width="160" height="60" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="645" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Service Provider C</text>
+  <text x="645" y="245" text-anchor="middle" font-size="10" fill="#555">(HR Portal)</text>
+
+  <!-- Lines from IdP to SPs -->
+  <line x1="350" y1="120" x2="160" y2="200" stroke="#E65100" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="400" y1="120" x2="390" y2="200" stroke="#E65100" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="450" y1="120" x2="620" y2="200" stroke="#E65100" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Flow Steps -->
+  <rect x="30" y="280" width="740" height="110" rx="10" fill="#FAFAFA" stroke="#ddd" stroke-width="1"/>
+  <text x="400" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">SSO Authentication Flow</text>
+
+  <!-- Step boxes -->
+  <circle cx="62" cy="325" r="12" fill="#7B1FA2"/>
+  <text x="62" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">1</text>
+  <text x="62" y="352" text-anchor="middle" font-size="9" fill="#555">User accesses</text>
+  <text x="62" y="363" text-anchor="middle" font-size="9" fill="#555">SP-A</text>
+
+  <line x1="85" y1="325" x2="105" y2="325" stroke="#555" stroke-width="1.5" marker-end="url(#sBlue)"/>
+
+  <circle cx="135" cy="325" r="12" fill="#1565C0"/>
+  <text x="135" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">2</text>
+  <text x="135" y="352" text-anchor="middle" font-size="9" fill="#555">SP-A redirects</text>
+  <text x="135" y="363" text-anchor="middle" font-size="9" fill="#555">to IdP</text>
+
+  <line x1="158" y1="325" x2="178" y2="325" stroke="#555" stroke-width="1.5" marker-end="url(#sOrange)"/>
+
+  <circle cx="208" cy="325" r="12" fill="#E65100"/>
+  <text x="208" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">3</text>
+  <text x="208" y="352" text-anchor="middle" font-size="9" fill="#555">User logs in</text>
+  <text x="208" y="363" text-anchor="middle" font-size="9" fill="#555">at IdP</text>
+
+  <line x1="231" y1="325" x2="251" y2="325" stroke="#555" stroke-width="1.5" marker-end="url(#sOrange)"/>
+
+  <circle cx="281" cy="325" r="12" fill="#E65100"/>
+  <text x="281" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">4</text>
+  <text x="281" y="352" text-anchor="middle" font-size="9" fill="#555">IdP sends</text>
+  <text x="281" y="363" text-anchor="middle" font-size="9" fill="#555">assertion to SP</text>
+
+  <line x1="304" y1="325" x2="324" y2="325" stroke="#555" stroke-width="1.5" marker-end="url(#sBlue)"/>
+
+  <circle cx="354" cy="325" r="12" fill="#1565C0"/>
+  <text x="354" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">5</text>
+  <text x="354" y="352" text-anchor="middle" font-size="9" fill="#555">SP creates</text>
+  <text x="354" y="363" text-anchor="middle" font-size="9" fill="#555">session</text>
+
+  <line x1="377" y1="325" x2="397" y2="325" stroke="#555" stroke-width="1.5" marker-end="url(#sGreen)"/>
+
+  <!-- Step 6: Magic -->
+  <rect x="415" y="310" width="340" height="65" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <circle cx="435" cy="325" r="12" fill="#2E7D32"/>
+  <text x="435" y="329" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">6</text>
+  <text x="595" y="328" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">User accesses SP-B or SP-C</text>
+  <text x="595" y="348" text-anchor="middle" font-size="11" fill="#2E7D32">Already authenticated! No login required.</text>
+  <text x="595" y="365" text-anchor="middle" font-size="9" fill="#888">IdP session is shared across all SPs</text>
+
+  <!-- Trust indicators -->
+  <text x="248" y="150" text-anchor="middle" font-size="9" fill="#E65100">SAML / OIDC</text>
+  <text x="420" y="150" text-anchor="middle" font-size="9" fill="#E65100">SAML / OIDC</text>
+  <text x="545" y="150" text-anchor="middle" font-size="9" fill="#E65100">SAML / OIDC</text>
+</svg>

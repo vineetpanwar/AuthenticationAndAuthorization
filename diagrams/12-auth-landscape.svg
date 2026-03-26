@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Arial, sans-serif">
+  <rect width="900" height="500" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Authentication &amp; Authorization Landscape</text>
+
+  <defs>
+    <marker id="lArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="lGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="lRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/>
+    </marker>
+  </defs>
+
+  <!-- Left Section: Authentication -->
+  <rect x="20" y="50" width="285" height="400" rx="14" fill="#FAFAFA" stroke="#1565C0" stroke-width="2"/>
+  <rect x="20" y="50" width="285" height="38" rx="14" fill="#E3F2FD"/>
+  <rect x="20" y="74" width="285" height="14" fill="#E3F2FD"/>
+  <text x="162" y="76" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">AUTHENTICATION</text>
+  <text x="162" y="94" text-anchor="middle" font-size="10" fill="#888">"Who are you?"</text>
+
+  <!-- Auth Methods -->
+  <rect x="35" y="108" width="255" height="32" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="50" y="128" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="128" font-size="12" fill="#333">Basic Authentication</text>
+  <text x="240" y="128" text-anchor="end" font-size="9" fill="#888">Simple</text>
+
+  <rect x="35" y="148" width="255" height="32" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="50" y="168" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="168" font-size="12" fill="#333">Bearer Token</text>
+  <text x="240" y="168" text-anchor="end" font-size="9" fill="#888">Stateful</text>
+
+  <rect x="35" y="188" width="255" height="32" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="50" y="208" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="208" font-size="12" fill="#333">API Key</text>
+  <text x="240" y="208" text-anchor="end" font-size="9" fill="#888">Service-to-Service</text>
+
+  <rect x="35" y="228" width="255" height="32" rx="8" fill="#90CAF9" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="50" y="248" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="248" font-size="12" font-weight="bold" fill="#333">OAuth 2.0</text>
+  <text x="240" y="248" text-anchor="end" font-size="9" fill="#888">Delegated</text>
+
+  <rect x="35" y="268" width="255" height="32" rx="8" fill="#90CAF9" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="50" y="288" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="288" font-size="12" font-weight="bold" fill="#333">JWT</text>
+  <text x="240" y="288" text-anchor="end" font-size="9" fill="#888">Stateless</text>
+
+  <rect x="35" y="308" width="255" height="32" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="50" y="328" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="328" font-size="12" fill="#333">Refresh Tokens</text>
+  <text x="240" y="328" text-anchor="end" font-size="9" fill="#888">Token Lifecycle</text>
+
+  <rect x="35" y="348" width="255" height="32" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1"/>
+  <text x="50" y="368" font-size="11" fill="#1565C0">&#9679;</text>
+  <text x="68" y="368" font-size="12" fill="#333">SSO</text>
+  <text x="240" y="368" text-anchor="end" font-size="9" fill="#888">Enterprise</text>
+
+  <rect x="35" y="388" width="255" height="32" rx="8" fill="#64B5F6" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="50" y="408" font-size="11" fill="#fff">&#9679;</text>
+  <text x="68" y="408" font-size="12" font-weight="bold" fill="#333">Passkeys / WebAuthn</text>
+  <text x="240" y="408" text-anchor="end" font-size="9" fill="#555">Passwordless</text>
+
+  <!-- Center Gateway -->
+  <rect x="330" y="140" width="130" height="220" rx="16" fill="#FFF9C4" stroke="#F9A825" stroke-width="3"/>
+  <text x="395" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#F57F17">Identity</text>
+  <text x="395" y="220" text-anchor="middle" font-size="13" font-weight="bold" fill="#F57F17">Verified</text>
+
+  <!-- Shield icon approximation -->
+  <rect x="370" y="240" width="50" height="50" rx="25" fill="#FFF9C4" stroke="#F57F17" stroke-width="2"/>
+  <text x="395" y="272" text-anchor="middle" font-size="22" fill="#F57F17">&#10003;</text>
+
+  <text x="395" y="310" text-anchor="middle" font-size="10" fill="#F57F17">AuthN passes</text>
+  <text x="395" y="325" text-anchor="middle" font-size="10" fill="#F57F17">identity to AuthZ</text>
+
+  <!-- Arrows from AuthN to Gateway -->
+  <line x1="305" y1="165" x2="325" y2="200" stroke="#1565C0" stroke-width="2" marker-end="url(#lArrow)"/>
+  <line x1="305" y1="250" x2="325" y2="250" stroke="#1565C0" stroke-width="2.5" marker-end="url(#lArrow)"/>
+  <line x1="305" y1="340" x2="325" y2="300" stroke="#1565C0" stroke-width="2" marker-end="url(#lArrow)"/>
+
+  <!-- Right Section: Authorization -->
+  <rect x="490" y="100" width="200" height="290" rx="14" fill="#FAFAFA" stroke="#2E7D32" stroke-width="2"/>
+  <rect x="490" y="100" width="200" height="38" rx="14" fill="#E8F5E9"/>
+  <rect x="490" y="124" width="200" height="14" fill="#E8F5E9"/>
+  <text x="590" y="126" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">AUTHORIZATION</text>
+  <text x="590" y="144" text-anchor="middle" font-size="10" fill="#888">"What can you do?"</text>
+
+  <!-- RBAC -->
+  <rect x="505" y="160" width="170" height="52" rx="10" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="590" y="182" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">RBAC</text>
+  <text x="590" y="200" text-anchor="middle" font-size="9" fill="#555">Role-Based Access Control</text>
+
+  <!-- ABAC -->
+  <rect x="505" y="222" width="170" height="52" rx="10" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="590" y="244" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">ABAC</text>
+  <text x="590" y="262" text-anchor="middle" font-size="9" fill="#555">Attribute-Based Access Control</text>
+
+  <!-- ACL -->
+  <rect x="505" y="284" width="170" height="52" rx="10" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="590" y="306" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">ACL</text>
+  <text x="590" y="324" text-anchor="middle" font-size="9" fill="#555">Access Control Lists</text>
+
+  <!-- Arrows from Gateway to AuthZ -->
+  <line x1="460" y1="210" x2="485" y2="210" stroke="#555" stroke-width="2" marker-end="url(#lArrow)"/>
+  <line x1="460" y1="250" x2="485" y2="250" stroke="#555" stroke-width="2" marker-end="url(#lArrow)"/>
+  <line x1="460" y1="290" x2="485" y2="290" stroke="#555" stroke-width="2" marker-end="url(#lArrow)"/>
+
+  <!-- Final: Resource Access -->
+  <rect x="720" y="140" width="160" height="220" rx="14" fill="#FAFAFA" stroke="#555" stroke-width="2"/>
+  <text x="800" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Resource</text>
+  <text x="800" y="190" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Access</text>
+
+  <!-- Allow -->
+  <rect x="740" y="215" width="120" height="45" rx="10" fill="#C8E6C9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="800" y="243" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">ALLOW</text>
+
+  <!-- Deny -->
+  <rect x="740" y="275" width="120" height="45" rx="10" fill="#FFCDD2" stroke="#C62828" stroke-width="2"/>
+  <text x="800" y="303" text-anchor="middle" font-size="16" font-weight="bold" fill="#C62828">DENY</text>
+
+  <!-- Arrows from AuthZ to Resource Access -->
+  <line x1="690" y1="230" x2="735" y2="237" stroke="#2E7D32" stroke-width="2" marker-end="url(#lGreen)"/>
+  <line x1="690" y1="290" x2="735" y2="297" stroke="#C62828" stroke-width="2" marker-end="url(#lRed)"/>
+
+  <!-- Bottom Summary -->
+  <rect x="20" y="460" width="860" height="30" rx="8" fill="#F5F5F5" stroke="#ddd" stroke-width="1"/>
+  <text x="450" y="480" text-anchor="middle" font-size="12" fill="#555">Authentication (AuthN) verifies identity  |  Authorization (AuthZ) controls access  |  They work together to secure your application</text>
+
+  <!-- Flow label -->
+  <text x="240" y="468" text-anchor="middle" font-size="10" font-weight="bold" fill="#1565C0">AuthN</text>
+  <text x="310" y="468" text-anchor="middle" font-size="16" fill="#555">&#8594;</text>
+  <text x="395" y="468" text-anchor="middle" font-size="10" font-weight="bold" fill="#F57F17">Identity</text>
+  <text x="450" y="468" text-anchor="middle" font-size="16" fill="#555">&#8594;</text>
+  <text x="525" y="468" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">AuthZ</text>
+  <text x="580" y="468" text-anchor="middle" font-size="16" fill="#555">&#8594;</text>
+  <text x="650" y="468" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Access</text>
+</svg>

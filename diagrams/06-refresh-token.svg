@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Access + Refresh Token Flow</text>
+
+  <defs>
+    <marker id="rBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="rGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="rRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/>
+    </marker>
+  </defs>
+
+  <!-- Token Expiry Timeline -->
+  <rect x="30" y="42" width="740" height="48" rx="8" fill="#FAFAFA" stroke="#ddd" stroke-width="1"/>
+  <text x="55" y="62" font-size="11" font-weight="bold" fill="#555">Timeline:</text>
+  <!-- Access token bar -->
+  <rect x="120" y="50" width="120" height="14" rx="4" fill="#FFCDD2" stroke="#C62828" stroke-width="1"/>
+  <text x="180" y="61" text-anchor="middle" font-size="8" font-weight="bold" fill="#C62828">Access Token (15min)</text>
+  <!-- Refresh token bar -->
+  <rect x="120" y="68" width="600" height="14" rx="4" fill="#C8E6C9" stroke="#2E7D32" stroke-width="1"/>
+  <text x="420" y="79" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">Refresh Token (7 days)</text>
+  <!-- Expired marker -->
+  <line x1="240" y1="48" x2="240" y2="86" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="248" y="58" font-size="7" fill="#C62828">expired!</text>
+
+  <!-- Client Box -->
+  <rect x="40" y="105" width="130" height="50" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="105" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">Client</text>
+
+  <!-- Server Box -->
+  <rect x="590" y="105" width="150" height="50" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="665" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">Server</text>
+
+  <!-- Step 1: Login -->
+  <line x1="170" y1="118" x2="585" y2="118" stroke="#1565C0" stroke-width="2" marker-end="url(#rBlue)"/>
+  <rect x="300" y="102" width="170" height="18" rx="4" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="312" cy="111" r="8" fill="#1565C0"/>
+  <text x="312" y="115" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">1</text>
+  <text x="395" y="114" text-anchor="middle" font-size="10" fill="#555">POST /login (credentials)</text>
+
+  <!-- Step 2: Tokens returned -->
+  <line x1="590" y1="143" x2="175" y2="143" stroke="#2E7D32" stroke-width="2" marker-end="url(#rGreen)"/>
+  <rect x="230" y="146" width="300" height="18" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="242" cy="155" r="8" fill="#2E7D32"/>
+  <text x="242" y="159" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">2</text>
+  <text x="390" y="159" text-anchor="middle" font-size="10" fill="#555">Access Token (15min) + Refresh Token (7d)</text>
+
+  <!-- Divider: Normal API -->
+  <line x1="30" y1="175" x2="770" y2="175" stroke="#ccc" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="400" y="189" text-anchor="middle" font-size="9" fill="#aaa">Normal API Requests (Access Token Valid)</text>
+
+  <!-- Client Box 2 -->
+  <rect x="40" y="198" width="130" height="40" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="105" y="223" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">Client</text>
+
+  <!-- Server Box 2 -->
+  <rect x="590" y="198" width="150" height="40" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="665" y="223" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Server</text>
+
+  <!-- Step 3 -->
+  <line x1="170" y1="208" x2="585" y2="208" stroke="#1565C0" stroke-width="2" marker-end="url(#rBlue)"/>
+  <rect x="270" y="193" width="230" height="18" rx="4" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="282" cy="202" r="8" fill="#1565C0"/>
+  <text x="282" y="206" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">3</text>
+  <text x="396" y="205" text-anchor="middle" font-size="10" fill="#555">API Request + Access Token</text>
+
+  <!-- Step 4 -->
+  <line x1="590" y1="228" x2="175" y2="228" stroke="#2E7D32" stroke-width="2" marker-end="url(#rGreen)"/>
+  <rect x="330" y="230" width="120" height="18" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="342" cy="239" r="8" fill="#2E7D32"/>
+  <text x="342" y="243" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">4</text>
+  <text x="400" y="242" text-anchor="middle" font-size="10" fill="#555">200 Response</text>
+
+  <!-- Divider: Token Expired -->
+  <line x1="30" y1="258" x2="770" y2="258" stroke="#C62828" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="310" y="260" width="180" height="20" rx="5" fill="#FFEBEE" stroke="#C62828" stroke-width="1"/>
+  <text x="400" y="274" text-anchor="middle" font-size="10" font-weight="bold" fill="#C62828">Access Token Expired!</text>
+
+  <!-- Client Box 3 -->
+  <rect x="40" y="290" width="130" height="40" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="105" y="315" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">Client</text>
+
+  <!-- Server Box 3 -->
+  <rect x="590" y="290" width="150" height="40" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="665" y="315" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Server</text>
+
+  <!-- Step 5: Detect expired -->
+  <rect x="43" y="335" width="125" height="18" rx="4" fill="#FFEBEE" stroke="#C62828" stroke-width="1"/>
+  <circle cx="55" cy="344" r="8" fill="#C62828"/>
+  <text x="55" y="348" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">5</text>
+  <text x="115" y="348" text-anchor="middle" font-size="9" fill="#C62828">Token expired</text>
+
+  <!-- Step 6: Send refresh token -->
+  <line x1="170" y1="300" x2="585" y2="300" stroke="#C62828" stroke-width="2" marker-end="url(#rRed)"/>
+  <rect x="225" y="285" width="290" height="18" rx="4" fill="#FFF9C4" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="237" cy="294" r="8" fill="#C62828"/>
+  <text x="237" y="298" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">6</text>
+  <text x="380" y="297" text-anchor="middle" font-size="10" fill="#555">POST /refresh + Refresh Token</text>
+
+  <!-- Step 7: New tokens -->
+  <line x1="590" y1="320" x2="175" y2="320" stroke="#2E7D32" stroke-width="2" marker-end="url(#rGreen)"/>
+  <rect x="195" y="322" width="370" height="18" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="207" cy="331" r="8" fill="#2E7D32"/>
+  <text x="207" y="335" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">7</text>
+  <text x="390" y="334" text-anchor="middle" font-size="10" fill="#555">New Access Token + New Refresh Token (rotation)</text>
+
+  <!-- Rotation note -->
+  <rect x="200" y="355" width="400" height="35" rx="8" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="1.5"/>
+  <text x="400" y="372" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B1FA2">Token Rotation: Old refresh token is invalidated after use</text>
+  <text x="400" y="385" text-anchor="middle" font-size="9" fill="#7B1FA2">If a stolen refresh token is reused, all tokens for that session are revoked</text>
+</svg>

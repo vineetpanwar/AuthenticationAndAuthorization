@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+bower_components/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Sensitive/session files
+medium-session.json
+
+# Build output
+dist/
+build/
+out/
+
+# Coverage directories
+coverage/
+.nyc_output/
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Screenshots (Medium publishing artifacts)
+*.png
+!diagrams/png/*.png
+
+# Medium publishing scripts
+medium-session.json
+.mcp.json
+
+# Misc
+.cache/
+tmp/
+temp/
