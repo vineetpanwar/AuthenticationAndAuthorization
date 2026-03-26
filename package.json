@@ -13,6 +13,8 @@
     "sso": "node src/authentication/07-sso/server.js",
     "passkeys": "node src/authentication/08-passkeys/server.js",
     "digest-auth": "node src/authentication/09-digest-auth/server.js",
+    "saml": "node src/authentication/10-saml/server.js",
+    "oidc": "node src/authentication/11-oidc/server.js",
     "rbac": "node src/authorization/01-rbac/server.js",
     "abac": "node src/authorization/02-abac/server.js",
     "acl": "node src/authorization/03-acl/server.js"

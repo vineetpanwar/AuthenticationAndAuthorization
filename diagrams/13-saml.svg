@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 520" font-family="Arial, sans-serif">
+  <rect width="850" height="520" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">SAML 2.0 SSO Flow (SP-Initiated)</text>
+
+  <defs>
+    <marker id="aBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="aOrange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E65100"/>
+    </marker>
+    <marker id="aGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="aRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C62828"/>
+    </marker>
+  </defs>
+
+  <!-- Actors -->
+  <!-- User/Browser -->
+  <rect x="30" y="60" width="120" height="55" rx="12" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="90" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B1FA2">User</text>
+  <text x="90" y="102" text-anchor="middle" font-size="10" fill="#555">(Browser)</text>
+
+  <!-- Service Provider -->
+  <rect x="310" y="60" width="160" height="55" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="390" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">Service Provider</text>
+  <text x="390" y="100" text-anchor="middle" font-size="10" fill="#555">(Jira, Salesforce)</text>
+
+  <!-- Identity Provider -->
+  <rect x="610" y="60" width="180" height="55" rx="12" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="700" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#E65100">Identity Provider</text>
+  <text x="700" y="100" text-anchor="middle" font-size="10" fill="#555">(Okta, Azure AD, ADFS)</text>
+
+  <!-- Vertical lifelines -->
+  <line x1="90" y1="115" x2="90" y2="450" stroke="#7B1FA2" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="390" y1="115" x2="390" y2="450" stroke="#1565C0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="700" y1="115" x2="700" y2="450" stroke="#E65100" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Step 1: User accesses SP -->
+  <line x1="100" y1="145" x2="378" y2="145" stroke="#7B1FA2" stroke-width="2" marker-end="url(#aBlue)"/>
+  <rect x="140" y="130" width="200" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="240" y="143" text-anchor="middle" font-size="11" fill="#333">1. Access protected resource</text>
+
+  <!-- Step 2: SP generates AuthnRequest, redirects to IdP -->
+  <line x1="380" y1="185" x2="102" y2="185" stroke="#1565C0" stroke-width="2" marker-end="url(#aRed)"/>
+  <rect x="130" y="170" width="260" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="240" y="183" text-anchor="middle" font-size="11" fill="#333">2. 302 Redirect + SAML AuthnRequest</text>
+
+  <!-- Step 3: Browser redirects to IdP -->
+  <line x1="100" y1="220" x2="688" y2="220" stroke="#7B1FA2" stroke-width="2" marker-end="url(#aOrange)"/>
+  <rect x="250" y="205" width="290" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="400" y="218" text-anchor="middle" font-size="11" fill="#333">3. Browser follows redirect to IdP with AuthnRequest</text>
+
+  <!-- Step 4: User authenticates -->
+  <rect x="640" y="245" width="120" height="30" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5"/>
+  <text x="700" y="265" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">4. User logs in</text>
+
+  <!-- Step 5: IdP generates SAML Response -->
+  <rect x="620" y="285" width="160" height="35" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5"/>
+  <text x="700" y="300" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">5. IdP creates signed</text>
+  <text x="700" y="313" text-anchor="middle" font-size="10" fill="#E65100">SAML Response (XML)</text>
+
+  <!-- Step 6: IdP POSTs SAML Response to browser (auto-submit form) -->
+  <line x1="688" y1="340" x2="102" y2="340" stroke="#E65100" stroke-width="2" marker-end="url(#aRed)"/>
+  <rect x="250" y="325" width="300" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="400" y="338" text-anchor="middle" font-size="11" fill="#333">6. HTML form with SAML Response (auto-submit POST)</text>
+
+  <!-- Step 7: Browser POSTs assertion to SP ACS -->
+  <line x1="100" y1="375" x2="378" y2="375" stroke="#7B1FA2" stroke-width="2" marker-end="url(#aBlue)"/>
+  <rect x="120" y="360" width="250" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="240" y="373" text-anchor="middle" font-size="11" fill="#333">7. POST SAML Response to SP's ACS URL</text>
+
+  <!-- Step 8: SP validates + creates session -->
+  <rect x="310" y="390" width="160" height="30" rx="6" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="390" y="409" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">8. Validate signature</text>
+
+  <!-- Step 9: SP grants access -->
+  <line x1="380" y1="435" x2="102" y2="435" stroke="#2E7D32" stroke-width="2" marker-end="url(#aGreen)"/>
+  <rect x="140" y="420" width="200" height="20" rx="4" fill="#fff" stroke="none"/>
+  <text x="240" y="433" text-anchor="middle" font-size="11" fill="#2E7D32">9. Access granted + session cookie</text>
+
+  <!-- Key callout -->
+  <rect x="30" y="465" width="790" height="45" rx="8" fill="#FAFAFA" stroke="#ddd" stroke-width="1"/>
+  <text x="425" y="482" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">Key: SAML uses XML assertions signed with X.509 certificates. Transport is via HTTP POST Binding (browser auto-submit form).</text>
+  <text x="425" y="500" text-anchor="middle" font-size="10" fill="#888">The SAML Assertion contains: Issuer, Subject (NameID), Conditions (audience, validity), AuthnStatement, AttributeStatement</text>
+</svg>
